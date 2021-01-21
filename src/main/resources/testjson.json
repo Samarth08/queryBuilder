@@ -1,0 +1,4534 @@
+[
+  {
+    "selectionobject": {
+      "tables": [
+        {
+          "def": {
+            "type": "selectentity",
+            "entity": [
+              {
+                "selectionobject": {
+                  "tables": [
+                    {
+                      "def": {
+                        "type": "tableentity",
+                        "entity": {
+                          "meta": {
+                            "schemaname": "GB_WM_VM",
+                            "tablename": "ITEM_DLY_POS"
+                          },
+                          "type": "table"
+                        },
+                        "tablealias": "POS"
+                      },
+                      "type": "drivingtable"
+                    },
+                    {
+                      "FROM": {
+                        "type": "tableentity",
+                        "entity": {
+                          "meta": {
+                            "schemaname": "GB_WM_VM",
+                            "tablename": "ITEM_DLY_SHIP"
+                          },
+                          "type": "table"
+                        },
+                        "tablealias": "SHIP"
+                      },
+                      "KEY": {
+                        "joinkey": "FULL OUTER JOIN"
+                      },
+                      "ON": [
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "WM_YR_WK",
+                                "enityalias": "SHIP"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "="
+                        },
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "WM_YR_WK",
+                                "enityalias": "POS"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "AND"
+                        },
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "ITEM_NBR",
+                                "enityalias": "SHIP"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "="
+                        },
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "ITEM_NBR",
+                                "enityalias": "POS"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        }
+                      ]
+                    },
+                    {
+                      "FROM": {
+                        "type": "tableentity",
+                        "entity": {
+                          "meta": {
+                            "schemaname": "GB_WM_VM",
+                            "tablename": "ITEM_WKLY_INV"
+                          },
+                          "type": "table"
+                        },
+                        "tablealias": "IWI"
+                      },
+                      "KEY": {
+                        "joinkey": "FULL OUTER JOIN"
+                      },
+                      "ON": [
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "WM_YR_WK",
+                                "enityalias": "POS"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "="
+                        },
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "WM_YR_WK",
+                                "enityalias": "IWI"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "AND"
+                        },
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "ITEM_NBR",
+                                "enityalias": "POS"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "="
+                        },
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "ITEM_NBR",
+                                "enityalias": "IWI"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        }
+                      ]
+                    },
+                    {
+                      "FROM": {
+                        "type": "selectentity",
+                        "entity": [
+                          {
+                            "selectionobject": {
+                              "tables": [
+                                {
+                                  "def": {
+                                    "type": "tableentity",
+                                    "entity": {
+                                      "meta": {
+                                        "schemaname": "GB_WM_VM",
+                                        "tablename": "CALENDAR_DAY"
+                                      },
+                                      "type": "table"
+                                    },
+                                    "tablealias": "CAL"
+                                  },
+                                  "type": "drivingtable"
+                                }
+                              ],
+                              "predicates": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "WM_YR_WK",
+                                        "enityalias": "CAL"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "IN"
+                                },
+                                {
+                                  "expression": [
+                                    [
+                                      {
+                                        "selectionobject": {
+                                          "tables": [
+                                            {
+                                              "def": {
+                                                "type": "tableentity",
+                                                "entity": {
+                                                  "meta": {
+                                                    "schemaname": "GB_WM_VM",
+                                                    "tablename": "CALENDAR_DAY"
+                                                  },
+                                                  "type": "table"
+                                                }
+                                              },
+                                              "type": "drivingtable"
+                                            }
+                                          ],
+                                          "predicates": [
+                                            {
+                                              "expression": [
+                                                {
+                                                  "def": {
+                                                    "colname": "GREGORIAN_DATE"
+                                                  },
+                                                  "expr_type": "operand",
+                                                  "type": "entity"
+                                                }
+                                              ],
+                                              "expr_type": "operand"
+                                            },
+                                            {
+                                              "expr_type": "operator",
+                                              "operator": "BETWEEN"
+                                            },
+                                            {
+                                              "operand1": {
+                                                "expression": [
+                                                  {
+                                                    "def": [
+                                                      {
+                                                        "def": [
+                                                          {
+                                                            "selectionobject": {
+                                                              "tables": [],
+                                                              "predicates": [],
+                                                              "columnaggregate": [],
+                                                              "columns": [
+                                                                {
+                                                                  "expression": [
+                                                                    {
+                                                                      "def": {
+                                                                        "arguments": [
+                                                                          [
+                                                                            {
+                                                                              "def": {
+                                                                                "key": "CURRENT_DATE"
+                                                                              },
+                                                                              "expr_type": "operand",
+                                                                              "type": "keyword"
+                                                                            },
+                                                                            {
+                                                                              "expr_type": "operator",
+                                                                              "operator": "-"
+                                                                            },
+                                                                            {
+                                                                              "def": {
+                                                                                "dateexpression": [
+                                                                                  {
+                                                                                    "def": {
+                                                                                      "key": "CURRENT_DATE"
+                                                                                    },
+                                                                                    "expr_type": "operand",
+                                                                                    "type": "keyword"
+                                                                                  }
+                                                                                ],
+                                                                                "datekeyword": "DAY"
+                                                                              },
+                                                                              "expr_type": "operand",
+                                                                              "type": "extractfunc"
+                                                                            },
+                                                                            {
+                                                                              "expr_type": "operator",
+                                                                              "operator": "+"
+                                                                            },
+                                                                            {
+                                                                              "def": {
+                                                                                "literalvalue": "1"
+                                                                              },
+                                                                              "expr_type": "operand",
+                                                                              "type": "literal"
+                                                                            }
+                                                                          ],
+                                                                          [
+                                                                            {
+                                                                              "def": {
+                                                                                "literalvalue": "-1"
+                                                                              },
+                                                                              "expr_type": "operand",
+                                                                              "type": "literal"
+                                                                            }
+                                                                          ]
+                                                                        ],
+                                                                        "func_name": "ADD_MONTHS"
+                                                                      },
+                                                                      "expr_type": "operand",
+                                                                      "type": "function"
+                                                                    }
+                                                                  ],
+                                                                  "colalias": ""
+                                                                }
+                                                              ],
+                                                              "aggregates": []
+                                                            }
+                                                          }
+                                                        ],
+                                                        "expr_type": "operand",
+                                                        "type": "selectentity"
+                                                      }
+                                                    ],
+                                                    "expr_type": "operand",
+                                                    "type": "expression"
+                                                  }
+                                                ],
+                                                "expr_type": "operand"
+                                              },
+                                              "operand2": {
+                                                "expression": [
+                                                  {
+                                                    "def": [
+                                                      {
+                                                        "def": [
+                                                          {
+                                                            "selectionobject": {
+                                                              "tables": [],
+                                                              "predicates": [],
+                                                              "columnaggregate": [],
+                                                              "columns": [
+                                                                {
+                                                                  "expression": [
+                                                                    {
+                                                                      "def": {
+                                                                        "key": "CURRENT_DATE"
+                                                                      },
+                                                                      "expr_type": "operand",
+                                                                      "type": "keyword"
+                                                                    },
+                                                                    {
+                                                                      "expr_type": "operator",
+                                                                      "operator": "-"
+                                                                    },
+                                                                    {
+                                                                      "def": {
+                                                                        "dateexpression": [
+                                                                          {
+                                                                            "def": {
+                                                                              "key": "CURRENT_DATE"
+                                                                            },
+                                                                            "expr_type": "operand",
+                                                                            "type": "keyword"
+                                                                          }
+                                                                        ],
+                                                                        "datekeyword": "DAY"
+                                                                      },
+                                                                      "expr_type": "operand",
+                                                                      "type": "extractfunc"
+                                                                    }
+                                                                  ],
+                                                                  "colalias": ""
+                                                                }
+                                                              ],
+                                                              "aggregates": []
+                                                            }
+                                                          }
+                                                        ],
+                                                        "expr_type": "operand",
+                                                        "type": "selectentity"
+                                                      }
+                                                    ],
+                                                    "expr_type": "operand",
+                                                    "type": "expression"
+                                                  }
+                                                ],
+                                                "expr_type": "operand"
+                                              }
+                                            },
+                                            {
+                                              "expr_type": "operator",
+                                              "operator": "AND"
+                                            },
+                                            {
+                                              "expression": [
+                                                {
+                                                  "def": {
+                                                    "colname": "WM_YR_WK"
+                                                  },
+                                                  "expr_type": "operand",
+                                                  "type": "entity"
+                                                }
+                                              ],
+                                              "expr_type": "operand"
+                                            },
+                                            {
+                                              "expr_type": "operator",
+                                              "operator": "<>"
+                                            },
+                                            {
+                                              "expression": [
+                                                {
+                                                  "def": [
+                                                    {
+                                                      "def": [
+                                                        {
+                                                          "selectionobject": {
+                                                            "tables": [
+                                                              {
+                                                                "def": {
+                                                                  "type": "tableentity",
+                                                                  "entity": {
+                                                                    "meta": {
+                                                                      "schemaname": "GB_WM_VM",
+                                                                      "tablename": "CALENDAR_DAY"
+                                                                    },
+                                                                    "type": "table"
+                                                                  }
+                                                                },
+                                                                "type": "drivingtable"
+                                                              }
+                                                            ],
+                                                            "predicates": [
+                                                              {
+                                                                "expression": [
+                                                                  {
+                                                                    "def": {
+                                                                      "colname": "GREGORIAN_DATE"
+                                                                    },
+                                                                    "expr_type": "operand",
+                                                                    "type": "entity"
+                                                                  }
+                                                                ],
+                                                                "expr_type": "operand"
+                                                              },
+                                                              {
+                                                                "expr_type": "operator",
+                                                                "operator": "BETWEEN"
+                                                              },
+                                                              {
+                                                                "operand1": {
+                                                                  "expression": [
+                                                                    {
+                                                                      "def": [
+                                                                        {
+                                                                          "def": [
+                                                                            {
+                                                                              "selectionobject": {
+                                                                                "tables": [],
+                                                                                "predicates": [],
+                                                                                "columnaggregate": [],
+                                                                                "columns": [
+                                                                                  {
+                                                                                    "expression": [
+                                                                                      {
+                                                                                        "def": {
+                                                                                          "arguments": [
+                                                                                            [
+                                                                                              {
+                                                                                                "def": {
+                                                                                                  "key": "CURRENT_DATE"
+                                                                                                },
+                                                                                                "expr_type": "operand",
+                                                                                                "type": "keyword"
+                                                                                              },
+                                                                                              {
+                                                                                                "expr_type": "operator",
+                                                                                                "operator": "-"
+                                                                                              },
+                                                                                              {
+                                                                                                "def": {
+                                                                                                  "dateexpression": [
+                                                                                                    {
+                                                                                                      "def": {
+                                                                                                        "key": "CURRENT_DATE"
+                                                                                                      },
+                                                                                                      "expr_type": "operand",
+                                                                                                      "type": "keyword"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "datekeyword": "DAY"
+                                                                                                },
+                                                                                                "expr_type": "operand",
+                                                                                                "type": "extractfunc"
+                                                                                              },
+                                                                                              {
+                                                                                                "expr_type": "operator",
+                                                                                                "operator": "+"
+                                                                                              },
+                                                                                              {
+                                                                                                "def": {
+                                                                                                  "literalvalue": "1"
+                                                                                                },
+                                                                                                "expr_type": "operand",
+                                                                                                "type": "literal"
+                                                                                              }
+                                                                                            ],
+                                                                                            [
+                                                                                              {
+                                                                                                "def": {
+                                                                                                  "literalvalue": "-2"
+                                                                                                },
+                                                                                                "expr_type": "operand",
+                                                                                                "type": "literal"
+                                                                                              }
+                                                                                            ]
+                                                                                          ],
+                                                                                          "func_name": "ADD_MONTHS"
+                                                                                        },
+                                                                                        "expr_type": "operand",
+                                                                                        "type": "function"
+                                                                                      }
+                                                                                    ],
+                                                                                    "colalias": ""
+                                                                                  }
+                                                                                ],
+                                                                                "aggregates": []
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "expr_type": "operand",
+                                                                          "type": "selectentity"
+                                                                        }
+                                                                      ],
+                                                                      "expr_type": "operand",
+                                                                      "type": "expression"
+                                                                    }
+                                                                  ],
+                                                                  "expr_type": "operand"
+                                                                },
+                                                                "operand2": {
+                                                                  "expression": [
+                                                                    {
+                                                                      "def": [
+                                                                        {
+                                                                          "def": [
+                                                                            {
+                                                                              "selectionobject": {
+                                                                                "tables": [],
+                                                                                "predicates": [],
+                                                                                "columnaggregate": [],
+                                                                                "columns": [
+                                                                                  {
+                                                                                    "expression": [
+                                                                                      {
+                                                                                        "def": {
+                                                                                          "arguments": [
+                                                                                            [
+                                                                                              {
+                                                                                                "def": {
+                                                                                                  "key": "CURRENT_DATE"
+                                                                                                },
+                                                                                                "expr_type": "operand",
+                                                                                                "type": "keyword"
+                                                                                              },
+                                                                                              {
+                                                                                                "expr_type": "operator",
+                                                                                                "operator": "-"
+                                                                                              },
+                                                                                              {
+                                                                                                "def": {
+                                                                                                  "dateexpression": [
+                                                                                                    {
+                                                                                                      "def": {
+                                                                                                        "key": "CURRENT_DATE"
+                                                                                                      },
+                                                                                                      "expr_type": "operand",
+                                                                                                      "type": "keyword"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "datekeyword": "DAY"
+                                                                                                },
+                                                                                                "expr_type": "operand",
+                                                                                                "type": "extractfunc"
+                                                                                              }
+                                                                                            ],
+                                                                                            [
+                                                                                              {
+                                                                                                "def": {
+                                                                                                  "literalvalue": "-1"
+                                                                                                },
+                                                                                                "expr_type": "operand",
+                                                                                                "type": "literal"
+                                                                                              }
+                                                                                            ]
+                                                                                          ],
+                                                                                          "func_name": "ADD_MONTHS"
+                                                                                        },
+                                                                                        "expr_type": "operand",
+                                                                                        "type": "function"
+                                                                                      }
+                                                                                    ],
+                                                                                    "colalias": ""
+                                                                                  }
+                                                                                ],
+                                                                                "aggregates": []
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "expr_type": "operand",
+                                                                          "type": "selectentity"
+                                                                        }
+                                                                      ],
+                                                                      "expr_type": "operand",
+                                                                      "type": "expression"
+                                                                    }
+                                                                  ],
+                                                                  "expr_type": "operand"
+                                                                }
+                                                              }
+                                                            ],
+                                                            "columnaggregate": [
+                                                              {
+                                                                "aggproj": "DISTINCT"
+                                                              }
+                                                            ],
+                                                            "columns": [
+                                                              {
+                                                                "expression": [
+                                                                  {
+                                                                    "def": {
+                                                                      "arguments": [
+                                                                        [
+                                                                          {
+                                                                            "def": {
+                                                                              "colname": "WM_YR_WK"
+                                                                            },
+                                                                            "expr_type": "operand",
+                                                                            "type": "entity"
+                                                                          }
+                                                                        ]
+                                                                      ],
+                                                                      "func_name": "MAX"
+                                                                    },
+                                                                    "expr_type": "operand",
+                                                                    "type": "function"
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ],
+                                                            "aggregates": []
+                                                          }
+                                                        }
+                                                      ],
+                                                      "expr_type": "operand",
+                                                      "type": "selectentity"
+                                                    }
+                                                  ],
+                                                  "expr_type": "operand",
+                                                  "type": "expression"
+                                                }
+                                              ],
+                                              "expr_type": "operand"
+                                            }
+                                          ],
+                                          "columnaggregate": [
+                                            {
+                                              "aggproj": "DISTINCT"
+                                            }
+                                          ],
+                                          "columns": [
+                                            {
+                                              "expression": [
+                                                {
+                                                  "def": {
+                                                    "colname": "WM_YR_WK"
+                                                  },
+                                                  "expr_type": "operand",
+                                                  "type": "entity"
+                                                }
+                                              ]
+                                            }
+                                          ],
+                                          "aggregates": []
+                                        }
+                                      }
+                                    ]
+                                  ],
+                                  "expr_type": "operand",
+                                  "type": "selectentity"
+                                }
+                              ],
+                              "columnaggregate": [],
+                              "columns": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "WM_YR_WK",
+                                        "enityalias": "CAL"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "colalias": ""
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "GREGORIAN_DATE",
+                                        "enityalias": "CAL"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "colalias": ""
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "CAL"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "aggregates": []
+                            }
+                          }
+                        ],
+                        "tablealias": "WK_DAY"
+                      },
+                      "KEY": {
+                        "joinkey": "JOIN"
+                      },
+                      "ON": [
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "WM_YR_WK",
+                                "enityalias": "POS"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "="
+                        },
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "WM_YR_WK",
+                                "enityalias": "WK_DAY"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "OR"
+                        },
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "WM_YR_WK",
+                                "enityalias": "SHIP"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "="
+                        },
+                        {
+                          "expression": [
+                            {
+                              "def": {
+                                "colname": "WM_YR_WK",
+                                "enityalias": "WK_DAY"
+                              },
+                              "expr_type": "operand",
+                              "type": "entity"
+                            }
+                          ],
+                          "expr_type": "operand"
+                        }
+                      ]
+                    }
+                  ],
+                  "predicates": [],
+                  "columnaggregate": [],
+                  "columns": [
+                    {
+                      "expression": [
+                        {
+                          "def": [
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "colname": "ITEM_NBR",
+                                    "enityalias": "POS"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "entity"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "ITEM_NBR",
+                                        "enityalias": "POS"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "IS NOT"
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "key": "NULL"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "keyword"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "colname": "ITEM_NBR",
+                                    "enityalias": "SHIP"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "entity"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "ITEM_NBR",
+                                        "enityalias": "SHIP"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "IS NOT"
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "key": "NULL"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "keyword"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "else": [
+                                {
+                                  "def": {
+                                    "colname": "ITEM_NBR",
+                                    "enityalias": "IWI"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "entity"
+                                }
+                              ]
+                            }
+                          ],
+                          "expr_type": "operand",
+                          "type": "case_when"
+                        }
+                      ],
+                      "colalias": "ITEM_NBR"
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": [
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "colname": "WM_YR_WK",
+                                    "enityalias": "POS"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "entity"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "WM_YR_WK",
+                                        "enityalias": "POS"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "IS NOT"
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "key": "NULL"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "keyword"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "colname": "WM_YR_WK",
+                                    "enityalias": "SHIP"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "entity"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "WM_YR_WK",
+                                        "enityalias": "SHIP"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "IS NOT"
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "key": "NULL"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "keyword"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "else": [
+                                {
+                                  "def": {
+                                    "colname": "WM_YR_WK",
+                                    "enityalias": "WK_DAY"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "entity"
+                                }
+                              ]
+                            }
+                          ],
+                          "expr_type": "operand",
+                          "type": "case_when"
+                        }
+                      ],
+                      "colalias": "WM_YR_WK"
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": [
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SAT_QTY",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "1"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SUN_QTY",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "2"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "MON_QTY",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "3"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "TUE_QTY",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "4"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "WED_QTY",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "5"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "THU_QTY",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "6"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "FRI_QTY",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "7"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            }
+                          ],
+                          "expr_type": "operand",
+                          "type": "case_when"
+                        }
+                      ],
+                      "colalias": "EPOS_QTY"
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": [
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SAT_SALES_AMT",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "1"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SUN_SALES_AMT",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "2"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "MON_SALES_AMT",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "3"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "TUE_SALES_AMT",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "4"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "WED_SALES_AMT",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "5"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "THU_SALES_AMT",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "6"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "FRI_SALES_AMT",
+                                            "enityalias": "POS"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "7"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            }
+                          ],
+                          "expr_type": "operand",
+                          "type": "case_when"
+                        }
+                      ],
+                      "colalias": "EPOS_SALES"
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": [
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SAT_SHIP_QTY",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "1"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SUN_SHIP_QTY",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "2"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "MON_SHIP_QTY",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "3"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "TUE_SHIP_QTY",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "4"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "WED_SHIP_QTY",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "5"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "THU_SHIP_QTY",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "6"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "FRI_SHIP_QTY",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "7"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            }
+                          ],
+                          "expr_type": "operand",
+                          "type": "case_when"
+                        }
+                      ],
+                      "colalias": "GROSS_SHIP_QTY"
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": [
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "RETAIL_AMT",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "1"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "RETAIL_AMT",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "2"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "RETAIL_AMT",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "3"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "RETAIL_AMT",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "4"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "RETAIL_AMT",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "5"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "RETAIL_AMT",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "6"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "RETAIL_AMT",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "7"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            }
+                          ],
+                          "expr_type": "operand",
+                          "type": "case_when"
+                        }
+                      ],
+                      "colalias": "GROSS_SHIP_RETAIL"
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": [
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SHIP_COST",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "1"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SHIP_COST",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "2"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SHIP_COST",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "3"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SHIP_COST",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "4"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SHIP_COST",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "5"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SHIP_COST",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "6"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            },
+                            {
+                              "then": [
+                                {
+                                  "def": {
+                                    "arguments": [
+                                      [
+                                        {
+                                          "def": {
+                                            "colname": "SHIP_COST",
+                                            "enityalias": "SHIP"
+                                          },
+                                          "expr_type": "operand",
+                                          "type": "entity"
+                                        }
+                                      ]
+                                    ],
+                                    "func_name": "ZEROIFNULL"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "function"
+                                }
+                              ],
+                              "when": [
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "colname": "DAY_OF_WK",
+                                        "enityalias": "WK_DAY"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "entity"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                },
+                                {
+                                  "expr_type": "operator",
+                                  "operator": "="
+                                },
+                                {
+                                  "expression": [
+                                    {
+                                      "def": {
+                                        "literalvalue": "7"
+                                      },
+                                      "expr_type": "operand",
+                                      "type": "literal"
+                                    }
+                                  ],
+                                  "expr_type": "operand"
+                                }
+                              ]
+                            }
+                          ],
+                          "expr_type": "operand",
+                          "type": "case_when"
+                        }
+                      ],
+                      "colalias": "GROSS_SHIP_COST"
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": {
+                            "arguments": [
+                              [
+                                {
+                                  "def": {
+                                    "colname": "ON_ORDER_QTY",
+                                    "enityalias": "IWI"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "entity"
+                                }
+                              ]
+                            ],
+                            "func_name": "ZEROIFNULL"
+                          },
+                          "expr_type": "operand",
+                          "type": "function"
+                        }
+                      ],
+                      "colalias": "ON_ORDER_QTY"
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": {
+                            "arguments": [
+                              [
+                                {
+                                  "def": {
+                                    "colname": "ON_ORDER_COST_AMT",
+                                    "enityalias": "IWI"
+                                  },
+                                  "expr_type": "operand",
+                                  "type": "entity"
+                                }
+                              ]
+                            ],
+                            "func_name": "ZEROIFNULL"
+                          },
+                          "expr_type": "operand",
+                          "type": "function"
+                        }
+                      ],
+                      "colalias": "ON_ORDER_COST_AMT"
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": {
+                            "colname": "GREGORIAN_DATE",
+                            "enityalias": "WK_DAY"
+                          },
+                          "expr_type": "operand",
+                          "type": "entity"
+                        }
+                      ],
+                      "colalias": ""
+                    },
+                    {
+                      "expression": [
+                        {
+                          "def": {
+                            "colname": "DAY_OF_WK",
+                            "enityalias": "WK_DAY"
+                          },
+                          "expr_type": "operand",
+                          "type": "entity"
+                        }
+                      ]
+                    }
+                  ],
+                  "aggregates": []
+                }
+              }
+            ],
+            "tablealias": "ITEMDLY"
+          },
+          "type": "drivingtable"
+        },
+        {
+          "FROM": {
+            "type": "tableentity",
+            "entity": {
+              "meta": {
+                "schemaname": "GB_WM_VM",
+                "tablename": "ITEM_DESC"
+              },
+              "type": "table"
+            },
+            "tablealias": "WU_ID"
+          },
+          "KEY": {
+            "joinkey": "JOIN"
+          },
+          "ON": [
+            {
+              "expression": [
+                {
+                  "def": {
+                    "colname": "ITEM_NBR",
+                    "enityalias": "ITEMDLY"
+                  },
+                  "expr_type": "operand",
+                  "type": "entity"
+                }
+              ],
+              "expr_type": "operand"
+            },
+            {
+              "expr_type": "operator",
+              "operator": "="
+            },
+            {
+              "expression": [
+                {
+                  "def": {
+                    "colname": "ITEM_NBR",
+                    "enityalias": "WU_ID"
+                  },
+                  "expr_type": "operand",
+                  "type": "entity"
+                }
+              ],
+              "expr_type": "operand"
+            }
+          ]
+        },
+        {
+          "FROM": {
+            "type": "tableentity",
+            "entity": {
+              "meta": {
+                "schemaname": "GB_WM_VM",
+                "tablename": "MDS_DESCRIPTOR"
+              },
+              "type": "table"
+            },
+            "tablealias": "MDS"
+          },
+          "KEY": {
+            "joinkey": "LEFT OUTER JOIN"
+          },
+          "ON": [
+            {
+              "expression": [
+                {
+                  "def": {
+                    "colname": "DEPT_DESC_ID",
+                    "enityalias": "WU_ID"
+                  },
+                  "expr_type": "operand",
+                  "type": "entity"
+                }
+              ],
+              "expr_type": "operand"
+            },
+            {
+              "expr_type": "operator",
+              "operator": "="
+            },
+            {
+              "expression": [
+                {
+                  "def": {
+                    "colname": "MDS_DESC_ID",
+                    "enityalias": "MDS"
+                  },
+                  "expr_type": "operand",
+                  "type": "entity"
+                }
+              ],
+              "expr_type": "operand"
+            }
+          ]
+        }
+      ],
+      "predicates": [],
+      "columnaggregate": [],
+      "columns": [
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "VENDOR_NBR",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(06)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "VENDOR_NAME",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(30)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": [
+                {
+                  "def": {
+                    "arguments": [
+                      {
+                        "expression": [
+                          {
+                            "def": {
+                              "literalvalue": "'20'"
+                            },
+                            "expr_type": "operand",
+                            "type": "literal"
+                          }
+                        ],
+                        "datatype": {
+                          "keyword": "CHAR(02)"
+                        }
+                      }
+                    ],
+                    "func_name": "CAST"
+                  },
+                  "expr_type": "operand",
+                  "type": "function"
+                },
+                {
+                  "expr_type": "operator",
+                  "operator": "||"
+                },
+                {
+                  "def": {
+                    "arguments": [
+                      {
+                        "expression": [
+                          {
+                            "def": [
+                              {
+                                "def": {
+                                  "arguments": [
+                                    [
+                                      {
+                                        "def": {
+                                          "colname": "WM_YR_WK",
+                                          "enityalias": "ITEMDLY"
+                                        },
+                                        "expr_type": "operand",
+                                        "type": "entity"
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "def": {
+                                          "literalvalue": "3"
+                                        },
+                                        "expr_type": "operand",
+                                        "type": "literal"
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "def": {
+                                          "literalvalue": "2"
+                                        },
+                                        "expr_type": "operand",
+                                        "type": "literal"
+                                      }
+                                    ]
+                                  ],
+                                  "func_name": "SUBSTR"
+                                },
+                                "expr_type": "operand",
+                                "type": "function"
+                              }
+                            ],
+                            "expr_type": "operand",
+                            "type": "expression"
+                          }
+                        ],
+                        "datatype": {
+                          "keyword": "CHAR(02)"
+                        }
+                      }
+                    ],
+                    "func_name": "CAST"
+                  },
+                  "expr_type": "operand",
+                  "type": "function"
+                },
+                {
+                  "expr_type": "operator",
+                  "operator": "||"
+                },
+                {
+                  "def": {
+                    "arguments": [
+                      {
+                        "expression": [
+                          {
+                            "def": [
+                              {
+                                "def": {
+                                  "arguments": [
+                                    [
+                                      {
+                                        "def": {
+                                          "colname": "WM_YR_WK",
+                                          "enityalias": "ITEMDLY"
+                                        },
+                                        "expr_type": "operand",
+                                        "type": "entity"
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "def": {
+                                          "literalvalue": "5"
+                                        },
+                                        "expr_type": "operand",
+                                        "type": "literal"
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        "def": {
+                                          "literalvalue": "2"
+                                        },
+                                        "expr_type": "operand",
+                                        "type": "literal"
+                                      }
+                                    ]
+                                  ],
+                                  "func_name": "SUBSTR"
+                                },
+                                "expr_type": "operand",
+                                "type": "function"
+                              }
+                            ],
+                            "expr_type": "operand",
+                            "type": "expression"
+                          }
+                        ],
+                        "datatype": {
+                          "keyword": "CHAR(02)"
+                        }
+                      }
+                    ],
+                    "func_name": "CAST"
+                  },
+                  "expr_type": "operand",
+                  "type": "function"
+                }
+              ],
+              "expr_type": "operand",
+              "namedalias": "WM_YR_WK",
+              "type": "expression",
+              "castdatatype": "CHAR(06)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "STATUS_CODE",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "TYPE_CODE",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(02)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "OLD_NBR",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "format": "'Z(09)9'",
+              "type": "entity",
+              "castdatatype": "CHAR(10)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "PRIMARY_DESC",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(20)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "SIZE_DESC",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(06)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "PRIMARY_DESC",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(20)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "SIZE_DESC",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(06)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "ACCT_DEPT_NBR",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "format": "'Z(05)9'",
+              "type": "entity",
+              "castdatatype": "CHAR(06)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "MDS_DESC",
+                "enityalias": "MDS"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(80)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "ORDER_DEPT_NBR",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "format": "'Z(05)9'",
+              "type": "entity",
+              "castdatatype": "CHAR(06)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "arguments": [
+                  [
+                    {
+                      "def": {
+                        "colname": "FINELINE",
+                        "enityalias": "WU_ID"
+                      },
+                      "expr_type": "operand",
+                      "type": "entity"
+                    }
+                  ],
+                  [
+                    {
+                      "def": {
+                        "literalvalue": "1"
+                      },
+                      "expr_type": "operand",
+                      "type": "literal"
+                    }
+                  ],
+                  [
+                    {
+                      "def": {
+                        "literalvalue": "2"
+                      },
+                      "expr_type": "operand",
+                      "type": "literal"
+                    }
+                  ]
+                ],
+                "func_name": "SUBSTRING"
+              },
+              "expr_type": "operand",
+              "type": "function",
+              "castdatatype": "CHAR(02)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "EPOS_QTY",
+                "enityalias": "ITEMDLY"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(11)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "EPOS_SALES",
+                "enityalias": "ITEMDLY"
+              },
+              "expr_type": "operand",
+              "format": "'------------------.99'",
+              "type": "entity",
+              "castdatatype": "CHAR(21)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": [
+                {
+                  "def": {
+                    "arguments": [
+                      [
+                        {
+                          "def": {
+                            "colname": "GROSS_SHIP_QTY",
+                            "enityalias": "ITEMDLY"
+                          },
+                          "expr_type": "operand",
+                          "type": "entity"
+                        }
+                      ]
+                    ],
+                    "func_name": "SUM"
+                  },
+                  "expr_type": "operand",
+                  "type": "function"
+                }
+              ],
+              "expr_type": "operand",
+              "format": "'Z(17)9'",
+              "type": "expression",
+              "castdatatype": "CHAR(18)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": [
+                {
+                  "def": {
+                    "arguments": [
+                      [
+                        {
+                          "def": {
+                            "colname": "GROSS_SHIP_QTY",
+                            "enityalias": "ITEMDLY"
+                          },
+                          "expr_type": "operand",
+                          "type": "entity"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "*"
+                        },
+                        {
+                          "def": {
+                            "colname": "GROSS_SHIP_RETAIL",
+                            "enityalias": "ITEMDLY"
+                          },
+                          "expr_type": "operand",
+                          "type": "entity"
+                        }
+                      ]
+                    ],
+                    "func_name": "SUM"
+                  },
+                  "expr_type": "operand",
+                  "type": "function"
+                }
+              ],
+              "expr_type": "operand",
+              "format": "'------------------.99'",
+              "type": "expression",
+              "castdatatype": "CHAR(21)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": [
+                {
+                  "def": {
+                    "arguments": [
+                      [
+                        {
+                          "def": {
+                            "colname": "GROSS_SHIP_QTY",
+                            "enityalias": "ITEMDLY"
+                          },
+                          "expr_type": "operand",
+                          "type": "entity"
+                        },
+                        {
+                          "expr_type": "operator",
+                          "operator": "*"
+                        },
+                        {
+                          "def": {
+                            "colname": "GROSS_SHIP_COST",
+                            "enityalias": "ITEMDLY"
+                          },
+                          "expr_type": "operand",
+                          "type": "entity"
+                        }
+                      ]
+                    ],
+                    "func_name": "SUM"
+                  },
+                  "expr_type": "operand",
+                  "type": "function"
+                }
+              ],
+              "expr_type": "operand",
+              "format": "'----------------.9999'",
+              "type": "expression",
+              "castdatatype": "CHAR(21)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "ITEM_CASE_UPC",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(16)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "ITM_MASTER_PK_CD",
+                "enityalias": "WU_ID"
+              },
+              "expr_type": "operand",
+              "type": "entity",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "arguments": [
+                  [
+                    {
+                      "def": {
+                        "colname": "ON_ORDER_QTY",
+                        "enityalias": "ITEMDLY"
+                      },
+                      "expr_type": "operand",
+                      "type": "entity"
+                    }
+                  ]
+                ],
+                "func_name": "SUM"
+              },
+              "expr_type": "operand",
+              "format": "'-Z(08)9'",
+              "type": "function",
+              "castdatatype": "CHAR(10)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "arguments": [
+                  [
+                    {
+                      "def": {
+                        "colname": "ON_ORDER_COST_AMT",
+                        "enityalias": "ITEMDLY"
+                      },
+                      "expr_type": "operand",
+                      "type": "entity"
+                    }
+                  ]
+                ],
+                "func_name": "SUM"
+              },
+              "expr_type": "operand",
+              "format": "'---------------.99'",
+              "type": "function",
+              "castdatatype": "CHAR(18)"
+            }
+          ],
+          "colalias": ""
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "literalvalue": "'|'"
+              },
+              "expr_type": "operand",
+              "type": "literal",
+              "castdatatype": "CHAR(01)"
+            }
+          ],
+          "colalias": "|"
+        },
+        {
+          "expression": [
+            {
+              "def": {
+                "colname": "GREGORIAN_DATE",
+                "enityalias": "ITEMDLY"
+              },
+              "expr_type": "operand",
+              "format": "'MM/DD/YYYY'",
+              "type": "entity",
+              "castdatatype": "CHAR(10)"
+            }
+          ]
+        }
+      ],
+      "aggregates": [
+        {
+          "func": "GROUP BY",
+          "arguments": [
+            [
+              {
+                "def": {
+                  "literalvalue": "1"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "2"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "3"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "4"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "5"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "6"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "7"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "8"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "9"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "10"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "11"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "12"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "13"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "14"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "15"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "16"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "17"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "18"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "19"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "20"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "21"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "22"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "23"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "24"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "25"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "26"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "27"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "28"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "29"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "30"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "31"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "32"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "34"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "36"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "38"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "39"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "40"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "41"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "42"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "44"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "46"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "47"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ]
+          ]
+        },
+        {
+          "func": "ORDER BY",
+          "arguments": [
+            [
+              {
+                "def": {
+                  "literalvalue": "1"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "5"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "11"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ],
+            [
+              {
+                "def": {
+                  "literalvalue": "47"
+                },
+                "expr_type": "operand",
+                "type": "literal"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  }
+]
